@@ -1,2 +1,2 @@
-# ECM_REML.jl
+# EMMREML.jl
 Julia implementation of EMMREML as a package.
