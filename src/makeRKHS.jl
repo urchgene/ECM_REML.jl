@@ -22,7 +22,7 @@ end
 function RKHS(M, w)
 
 	M = Matrix(M);
-	M = 1.0 .+ Matrix(M);
+	#M = 1.0 .+ Matrix(M); # use only 0,1,2 markers.
 	w = Float64.(w)
 	w = 1/(2*(w*w))
 	K = SqEuclid(M);
@@ -37,7 +37,7 @@ end
 function RKHSinv(M, w)
 
         M = Matrix(M);
-        M = 1.0 .+ Matrix(M);
+        #M = 1.0 .+ Matrix(M);
         w = Float64.(w)
         w = 1/(2*(w*w))
         K = SqEuclid(M);
