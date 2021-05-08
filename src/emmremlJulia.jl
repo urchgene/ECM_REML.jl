@@ -89,7 +89,8 @@ varuhat = sigmausqhat.^2 * ZK'P * ZK;
 PEVuhat = sigmausqhat * K - varuhat;
 varbetahat = pinv(X'Vinv * X);
 
-uhat = hcat(linenames, uhat); uhat = convert(DataFrame, uhat);
+#uhat = hcat(linenames, uhat); uhat = convert(DataFrame, uhat);
+uhat = DataFrame(Lines=linenames, Uhat=uhat);
 Vu = sigmausqhat; Ve = sigmaesqhat;  
 varuhat = diag(varuhat); varbetahat = diag(varbetahat); PEVuhat = diag(PEVuhat);
 h2 = Vu ./(Vu + Ve); rel = 1 .- (PEVuhat ./(Vu * diag(K)));
