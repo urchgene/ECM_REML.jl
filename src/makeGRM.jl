@@ -7,7 +7,7 @@ using Statistics;
 function GRM(M)
 
 	M = Matrix(M);
-	M = 1.0 .+ Matrix(M);
+	#M = 1.0 .+ Matrix(M); # change to 0,1,2
 	freq = mean(M, dims=1) ./2
 	P = 2 .* freq
 	varsum = sum(P .* (1.0 .- freq))
@@ -22,7 +22,7 @@ end
 function GRMinv(M)
 
         M = Matrix(M);
-        M = 1.0 .+ Matrix(M);
+        #M = 1.0 .+ Matrix(M);
         freq = mean(M, dims=1) ./2
         P = 2 .* freq
         varsum = sum(P .* (1.0 .- freq))
