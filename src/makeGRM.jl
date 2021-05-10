@@ -11,7 +11,7 @@ function GRM(M)
 	freq = mean(M, dims=1) ./2
 	P = freq
 	varsum = 2 * sum(P .* (1.0 .- freq))
-	A = (M .- P) ./ varsum;
+	A = (M .- (2 .* P)) ./ varsum;
 	A = A * A';
 	A = 0.95*A + 0.05*I
 	return(A)
@@ -26,7 +26,7 @@ function GRMinv(M)
         freq = mean(M, dims=1) ./2
         P = freq
         varsum = 2 * sum(P .* (1.0 .- freq))
-        A = (M .- P) ./ varsum;
+        A = (M .- (2 .* P)) ./ varsum;
         A = A * A';
         A = 0.95*A + 0.05*I
 	A = cholesky(Positive, A);
