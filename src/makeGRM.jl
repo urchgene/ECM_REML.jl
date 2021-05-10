@@ -12,7 +12,7 @@ function GRM(M)
 	varsum = 2 * sum(P .* (1.0 .- P))
 	A = (M .- (2 .* P)) ;
 	K = (A * A') .* (1/varsum);
-	K = 0.95*K + 0.05*I
+	K = 0.99*K + 0.01*I
 	return(K)
 
 end
@@ -26,7 +26,7 @@ function GRMinv(M)
         varsum = 2 * sum(P .* (1.0 .- P))
         A = (M .- (2 .* P));
         K = (A * A') .* (1/varsum);
-        K = 0.95*K + 0.05*I
+        K = 0.99*K + 0.01*I
 	K = cholesky(Positive, K);
 	K = inv(K);
         return(K)
