@@ -9,8 +9,8 @@ function GRM(M)
 	M = Matrix(M);
 	#M = 1.0 .+ Matrix(M); # change to 0,1,2
 	freq = mean(M, dims=1) ./2
-	P = 2 .* freq
-	varsum = sum(P .* (1.0 .- freq))
+	P = freq
+	varsum = 2 * sum(P .* (1.0 .- freq))
 	A = (M .- P) ./ varsum;
 	A = A * A';
 	A = 0.95*A + 0.05*I
@@ -24,8 +24,8 @@ function GRMinv(M)
         M = Matrix(M);
         #M = 1.0 .+ Matrix(M);
         freq = mean(M, dims=1) ./2
-        P = 2 .* freq
-        varsum = sum(P .* (1.0 .- freq))
+        P = freq
+        varsum = 2 * sum(P .* (1.0 .- freq))
         A = (M .- P) ./ varsum;
         A = A * A';
         A = 0.95*A + 0.05*I
