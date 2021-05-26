@@ -60,3 +60,32 @@ function GRMwtedinv(M, D)
         return(K)
 
 end
+
+
+
+### computation of large SNP data in pieces
+function GRMiter(M, pieces)
+
+       series = collect(1:size(M,2));
+       xx = Iterators.partition(series, pieces) |> collect;
+
+       f = 0.0;
+       G = zeros(size(M,1), size(M,1));
+
+       for i=1:length(xx)
+
+       MM = Matrix(M[:, xx[i]])  ## extract column of iterator
+       P = mean(MM, dims=1) ./2
+       varsum = 2 * sum(P .* (1.0 .- P))
+       f += varsum;
+       A = (MM .- (2 .* P)) ;
+       K = (A * A');
+       G = G + K;
+       end
+
+       G = G .* (1/f);
+       G = 0.99*G + 0.01*I;
+
+       return(G)
+
+end
