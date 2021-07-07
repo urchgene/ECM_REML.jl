@@ -12,7 +12,7 @@ using SuperLU, SparseArrays;
 using ForwardDiff, PositiveFactorizations;
 using LinearAlgebra, DataFrames;
 
-function emmreml(y, X, Z, K, linenames)
+function emmreml_LU(y, X, Z, K, linenames)
 
 q = size(X,2);
 n = size(y,1);
